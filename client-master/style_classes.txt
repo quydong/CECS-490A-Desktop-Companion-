@@ -1,0 +1,45 @@
+This list is outdated. Some classes are missing/no longer work. This will be updated soon
+
+
+Dashboard - dashboard
+    Settings HBox Bar - dashboard_settings_button_parent
+        Settings Button - dashboard_settings_button
+            Icon - dashboard_settings_button_icon
+
+
+    Action Grid Pane Parent - action_grid_pane_parent
+        Action Grid Pane (Grid Pane) - action_grid_pane
+            Action Box - action_box
+            if folder back button :
+                    Icon : folder_action_back_button_icon
+
+                Is Icon Present ?
+                    yes : action_box_icon_present
+                    no : action_box_icon_not_present
+                Is Action Valid (is plugin by module name found) ?
+                yes : action_box_valid
+                no : action_box_invalid
+
+            Action On Click : action_box_onclick
+
+            Error Icon - action_box_error_icon
+
+            Display Text Label - action_box_display_text_label
+
+Settings - settings_base
+    Settings heading label - settings_heading_label
+    Scroll Pane - settings_base_scroll_pane
+        Base VBox - settings_base_vbox
+
+    Button Bar - settings_button_bar
+
+First Time Use - first_time_use_pane
+    Heading Label - first_time_use_pane_heading_label
+    Stack Pane - first_time_use_pane_stackpane
+        Welcome Pane - first_time_use_pane_welcome
+            Head - first_time_use_welcome_pane_welcome_label
+            Small Label - first_time_use_welcome_pane_next_to_continue_label
+        License Pane - first_time_use_pane_license
+        Final Config - first_time_use_pane_final_config
+            Scroll Pane - first_time_use_final_config_pane_scroll_pane
+    Button Bar - first_time_use_pane_button_bar

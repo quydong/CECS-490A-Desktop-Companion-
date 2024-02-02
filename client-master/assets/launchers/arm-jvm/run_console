@@ -1,0 +1,33 @@
+#!/bin/bash
+#
+# Stream-Pi - Free & Open-Source Modular Cross-Platform Programmable Macro Pad
+# Copyright (C) 2019-2021  Debayan Sutradhar (rnayabed),  Samuel Quiñones (SamuelQuinones)
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+
+cd "${0%/*}"
+export ENABLE_GLUON_COMMERCIAL_EXTENSIONS=true
+
+run() {
+	if ! jre/bin/java -Xmx700m -Duse.egl=true -Dcom.sun.javafx.touch=true -Dcom.sun.javafx.isEmbedded=true -Djavafx.verbose=true -Dprism.lcdtext=false -Dprism.verbose=true -Dcom.sun.javafx.virtualKeyboard=javafx -Dembedded=monocle -Dglass.platform=Monocle -Dmonocle.platform=EGL -Djava.library.path=. -Dmonocle.egl.lib=./libgluon_drm.so -Degl.displayid=$DISPLAY_CARD --module-path . --add-modules ALL-MODULE-PATH com.stream_pi.client.Main Stream-Pi.screenSaverFeature=true Stream-Pi.showShutDownButton=true Stream-Pi.startupRunnerFileName=run_console Stream-Pi.xMode=false Stream-Pi.showFullScreenToggleButton=false Stream-Pi.defaultFullScreenMode=true ; then
+        echo Keyboard Interrupt / Failed to launch using $DISPLAY_CARD!
+    fi
+}
+
+if [[ $(ls -dq /sys/class/drm/card0* 2>/dev/null | wc -l) > 1 ]]; then
+    DISPLAY_CARD=/dev/dri/card0
+    run
+elif [[ $(ls -dq /sys/class/drm/card1* 2>/dev/null | wc -l) > 1 ]]; then
+    DISPLAY_CARD=/dev/dri/card1
+    run
+else
+    echo KMS not found. Make sure you have KMS driver enabled!
+fi
