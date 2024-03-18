@@ -1,5 +1,0 @@
-package com.stream_pi.server.config.record;
-
-public record ActionGridSettings(double actionGridActionSize, boolean actionGridUseSameActionSizeAsProfile, double actionGridActionGap, boolean actionGridUseSameActionGapAsProfile, double actionGridActionDisplayTextFontSize, boolean actionGridUseSameActionDisplayTextFontSizeAsProfile)
-{
-}
